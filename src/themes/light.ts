@@ -1,0 +1,26 @@
+export default {
+    palette: {
+        themePrimary: '#672b8a',
+        themeLighterAlt: '#f8f3fa',
+        themeLighter: '#e3d2ec',
+        themeLight: '#cbaedc',
+        themeTertiary: '#9d6cb9',
+        themeSecondary: '#763c98',
+        themeDarkAlt: '#5d267c',
+        themeDark: '#4e2069',
+        themeDarker: '#3a184d',
+        neutralLighterAlt: '#faf9f8',
+        neutralLighter: '#f3f2f1',
+        neutralLight: '#edebe9',
+        neutralQuaternaryAlt: '#e1dfdd',
+        neutralQuaternary: '#d0d0d0',
+        neutralTertiaryAlt: '#c8c6c4',
+        neutralTertiary: '#a19f9d',
+        neutralSecondary: '#605e5c',
+        neutralPrimaryAlt: '#3b3a39',
+        neutralPrimary: '#323130',
+        neutralDark: '#201f1e',
+        black: '#000000',
+        white: '#ffffff',
+    }
+}

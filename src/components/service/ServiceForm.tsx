@@ -4,7 +4,7 @@ import {format as momentFormat} from "../../utils/moment-util";
 import {MomentFormat} from "../../enums/moment-format";
 import {HeartbeatService} from "../../types/service";
 import { columnProps, buttonStyles } from '../../pages/services'
-import {addService, deleteService, modifyService} from "../../api";
+import {deleteService, modifyService} from "../../api";
 
 export const ServiceForm: React.FunctionComponent<{data: HeartbeatService, reloader: Function}> = ({data, reloader}) => {
     const id = data.id

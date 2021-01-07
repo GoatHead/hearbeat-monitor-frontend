@@ -1,6 +1,5 @@
 import React, {useState} from "react";
 import {PrimaryButton, Stack, TextField} from "office-ui-fabric-react";
-import {HeartbeatService} from "../../types/service";
 import { columnProps, buttonStyles } from '../../pages/services'
 import {addService} from "../../api";
 

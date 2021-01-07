@@ -3,50 +3,32 @@ import { Nav, INavLink, INavStyles, INavLinkGroup } from 'office-ui-fabric-react
 import * as _ from 'lodash'
 import {useEffect, useState} from "react";
 
-type NavProps = {
-    key: string
-}
-
-const navStyles: Partial<INavStyles> = {
-    root: {
-        width: 208,
-        height: '100vh',
-        boxSizing: 'border-box',
-        border: '1px solid #eee',
-        overflowY: 'auto',
-    },
-};
-
 const navLinkGroups: INavLinkGroup[] = [
     {
         links: [
             {
                 key: '#',
-                name: 'Files',
+                name: '메인',
+                icon: 'ViewDashboard',
                 url: '#',
-                linkProps: {
-                    ['data-foo']: 'bar'
-                }
             },
             {
-                key: '#/recent',
-                name: 'Recent',
-                url: '#/recent'
+                key: '#/services',
+                name: '서비스',
+                icon: 'Server',
+                url: '#/services'
             },
             {
-                key: '#/photos',
-                name: 'Photos',
-                url: '#/photos'
+                key: '#/hooks',
+                name: '웹훅',
+                icon: 'Send',
+                url: '#/hooks'
             },
             {
-                key: '#/shared',
-                name: 'Shared',
-                url: '#/shared'
-            },
-            {
-                key: '#/recyclebin',
-                name: 'Recycle bin',
-                url: '#/recyclebin'
+                key: '#/heartbeat-test',
+                name: '하트비트 테스트',
+                icon: 'HeartFill',
+                url: '#/heartbeat-test'
             }
         ]
     },
@@ -54,7 +36,7 @@ const navLinkGroups: INavLinkGroup[] = [
 
 const keyList: (string | undefined)[] = _.map(navLinkGroups[0].links, 'key')
 
-export const AppNav: React.FunctionComponent<NavProps> = () => {
+export const AppNav: React.FunctionComponent = () => {
     const [selectedKey, setSelectedKey] = useState('#')
 
     useEffect(() => {
@@ -69,10 +51,10 @@ export const AppNav: React.FunctionComponent<NavProps> = () => {
 
     return (
         <Nav
+            className="sidebar"
             onLinkClick={_onLinkClick}
             selectedKey={selectedKey}
             ariaLabel="Nav"
-            styles={navStyles}
             groups={navLinkGroups}
         />
     );

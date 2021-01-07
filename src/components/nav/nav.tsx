@@ -13,6 +13,12 @@ const navLinkGroups: INavLinkGroup[] = [
                 url: '#',
             },
             {
+                key: '#/application',
+                name: '애플리케이션',
+                icon: 'PageHeaderEdit',
+                url: '#/application'
+            },
+            {
                 key: '#/services',
                 name: '서비스',
                 icon: 'Server',

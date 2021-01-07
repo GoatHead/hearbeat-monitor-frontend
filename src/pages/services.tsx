@@ -69,7 +69,7 @@ export const Services: React.FunctionComponent = () => {
 
     return (
         <div>
-            <h3>등록된 서비스 <IconButton iconProps={{iconName: 'Refresh'}} text="리로드" onClick={() => setRedraw(true)}/> </h3>
+            <h3>서비스 설정 <IconButton iconProps={{iconName: 'Refresh'}} text="리로드" onClick={() => setRedraw(true)}/> </h3>
             {detailMessage()}<br/>
                 {_renderServiceList()} <br/>
                 <AddServiceForm reloader={setRedraw} />

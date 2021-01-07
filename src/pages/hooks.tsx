@@ -76,7 +76,7 @@ export const Hooks: React.FunctionComponent = () => {
 
     return (
         <div>
-            <h3>등록된 훅 <IconButton iconProps={{iconName: 'Refresh'}} text="리로드" onClick={() => setRedraw(true)}/> </h3>
+            <h3>훅 설정 <IconButton iconProps={{iconName: 'Refresh'}} text="리로드" onClick={() => setRedraw(true)}/> </h3>
             {detailMessage()} <br/>
             {_renderHookList()} <br/>
             <AddHookForm reloader={setRedraw} />

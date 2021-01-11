@@ -31,6 +31,12 @@ const navLinkGroups: INavLinkGroup[] = [
                 url: '#/hooks'
             },
             {
+                key: '#/history',
+                name: '점검 이력',
+                icon: 'FullHistory',
+                url: '#/history'
+            },
+            {
                 key: '#/heartbeat-test',
                 name: '하트비트 테스트',
                 icon: 'HeartFill',

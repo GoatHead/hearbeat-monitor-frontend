@@ -1,5 +1,6 @@
 import axios from "axios";
 import {HeartbeatService} from "../types/service";
+import {SearchCondition} from "../types/searchCondition";
 
 const apiUrl = 'http://localhost:8080'
 
@@ -24,3 +25,5 @@ export const modifyHook = (input: {id: number, name: string, url: string, type: 
 export const deleteHook = (input: {id: number}) => {
     return axios.delete(`${apiUrl}/api/hook`, { data: input })
 }
+
+export const getHeartBeatHistory = (searchCondition: SearchCondition) => axios.get(`${apiUrl}/api/history`, { params: searchCondition})

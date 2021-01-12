@@ -3,7 +3,7 @@ import {HashRouter, Route, Switch} from "react-router-dom";
 import {HeartbeatTest, Application, Hooks, Root, Services, History} from "../pages";
 
 const Router: React.FunctionComponent = () => (
-    <HashRouter>
+    <HashRouter basename={process.env.PUBLIC_URL}>
         <Switch>
             <Route exact path="/" component={Root} />
             <Route exact path="/application" component={Application} />

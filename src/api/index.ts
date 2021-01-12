@@ -1,8 +1,8 @@
 import axios from "axios";
-import {HeartbeatService} from "../types/service";
 import {SearchCondition} from "../types/searchCondition";
+import config from '../config/config'
 
-const apiUrl = 'http://localhost:8080'
+const apiUrl = config.API_SERVER_URL
 
 export const getServiceList = () => axios.get(`${apiUrl}/api/service`)
 export const addService = (input: {name: string, url: string}) => {
@@ -27,3 +27,6 @@ export const deleteHook = (input: {id: number}) => {
 }
 
 export const getHeartBeatHistory = (searchCondition: SearchCondition) => axios.get(`${apiUrl}/api/history`, { params: searchCondition})
+
+export const getApplicationSetting = () => axios.get(`${apiUrl}/api/application-settings`)
+export const modifyApplicationSetting = (input: {cycleSec: number}) => axios.put(`${apiUrl}/api/application-settings`, { id: 1, ...input})

@@ -79,6 +79,7 @@ export const HistorySearchPeriod: React.FunctionComponent<{setSearchCondition: F
             firstDayOfWeek={DayOfWeek.Sunday}
             value={startDate === null ? undefined : startDate}
             strings={DayPickerStrings}
+            showGoToToday={false}
             placeholder="날짜를 선택하세요..."
             ariaLabel="날짜 선택"
             formatDate={formatYyyy_Mm_Dd}
@@ -88,6 +89,7 @@ export const HistorySearchPeriod: React.FunctionComponent<{setSearchCondition: F
         <DatePicker
             className={controlClass.control}
             label="조회 종료일"
+            showGoToToday={false}
             value={endDate === null ? undefined : endDate}
             firstDayOfWeek={DayOfWeek.Sunday}
             strings={DayPickerStrings}

@@ -30,3 +30,6 @@ export const getHeartBeatHistory = (searchCondition: SearchCondition) => axios.g
 
 export const getApplicationSetting = () => axios.get(`${apiUrl}/api/application-settings`)
 export const modifyApplicationSetting = (input: {cycleSec: number}) => axios.put(`${apiUrl}/api/application-settings`, { id: 1, ...input})
+
+export const testHeartBeat = (input: {id: number[]}) => axios.post(`${apiUrl}/api/heartbeat/test`, input)
+export const testHeartBeatAll = () => axios.post(`${apiUrl}/api/heartbeat/testAll`)

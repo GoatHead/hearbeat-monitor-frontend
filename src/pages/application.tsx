@@ -11,6 +11,8 @@ import {
 } from "office-ui-fabric-react";
 import {getApplicationSetting, modifyApplicationSetting} from '../api'
 import moment from 'moment'
+import {HeartBeatApiWrapper} from "../types/api";
+import {AjaxResult} from "../enums/ajax-result";
 
 
 export const columnProps: Partial<IStackProps> = {
@@ -52,10 +54,15 @@ export const Application: React.FunctionComponent = () => {
 
     const loadApplicationSettings = () => {
         getApplicationSetting().then(res => {
-            const aSettings: HeartbeatApplicationSettings = res.data.data
-            setCycleSec(String(aSettings.cycleSec));
+            const result: HeartBeatApiWrapper = res.data
+            if (result.status === AjaxResult.FAIL) {
+                alert('작업을 수행 중 오류가 발생하였습니다.');
+            } else {
+                const aSettings: HeartbeatApplicationSettings = res.data.data
+                setCycleSec(String(aSettings.cycleSec));
 
-            setReload(false);
+                setReload(false);
+            }
         });
     }
 
@@ -99,6 +106,10 @@ export const Application: React.FunctionComponent = () => {
         }
         modifyApplicationSetting({cycleSec: parsedNumber})
             .then(res => {
+                const result: HeartBeatApiWrapper = res.data
+                if (result.status === AjaxResult.FAIL) {
+                    alert('작업을 수행 중 오류가 발생하였습니다.');
+                }
                 setReload(true)
             })
     }

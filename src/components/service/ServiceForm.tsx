@@ -5,6 +5,8 @@ import {MomentFormat} from "../../enums/moment-format";
 import {HeartbeatService} from "../../types/service";
 import { columnProps, buttonStyles } from '../../pages/services'
 import {deleteService, modifyService} from "../../api";
+import {HeartBeatApiWrapper} from "../../types/api";
+import {AjaxResult} from "../../enums/ajax-result";
 
 export const ServiceForm: React.FunctionComponent<{data: HeartbeatService, reloader: Function}> = ({data, reloader}) => {
     const id = data.id
@@ -14,6 +16,10 @@ export const ServiceForm: React.FunctionComponent<{data: HeartbeatService, reloa
     const handleModify = () => {
         modifyService({ id, name, url })
             .then(res => {
+                const result: HeartBeatApiWrapper = res.data
+                if (result.status === AjaxResult.FAIL) {
+                    alert('작업을 수행 중 오류가 발생하였습니다.');
+                }
                 reloader(true)
             })
     }
@@ -22,6 +28,10 @@ export const ServiceForm: React.FunctionComponent<{data: HeartbeatService, reloa
         if (confirm('정말로 삭제하겠습니까?')) {
             deleteService({ id })
                 .then(res => {
+                    const result: HeartBeatApiWrapper = res.data
+                    if (result.status === AjaxResult.FAIL) {
+                        alert('작업을 수행 중 오류가 발생하였습니다.');
+                    }
                     reloader(true)
                 })
         }

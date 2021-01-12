@@ -5,6 +5,8 @@ import {MomentFormat} from "../../enums/moment-format";
 import {HeartbeatHook} from "../../types/hook";
 import { columnProps, buttonStyles } from '../../pages/services'
 import {deleteHook, modifyHook} from "../../api";
+import {HeartBeatApiWrapper} from "../../types/api";
+import {AjaxResult} from "../../enums/ajax-result";
 
 export const HookForm: React.FunctionComponent<{data: HeartbeatHook, reloader: Function}> = ({data, reloader}) => {
     const id = data.id
@@ -15,6 +17,10 @@ export const HookForm: React.FunctionComponent<{data: HeartbeatHook, reloader: F
     const handleModify = () => {
         modifyHook({ id, name, url, type })
             .then(res => {
+                const result: HeartBeatApiWrapper = res.data
+                if (result.status === AjaxResult.FAIL) {
+                    alert('작업을 수행 중 오류가 발생하였습니다.');
+                }
                 reloader(true)
             })
     }
@@ -23,6 +29,10 @@ export const HookForm: React.FunctionComponent<{data: HeartbeatHook, reloader: F
         if (confirm('정말로 삭제하겠습니까?')) {
             deleteHook({ id })
                 .then(res => {
+                    const result: HeartBeatApiWrapper = res.data
+                    if (result.status === AjaxResult.FAIL) {
+                        alert('작업을 수행 중 오류가 발생하였습니다.');
+                    }
                     reloader(true)
                 })
         }

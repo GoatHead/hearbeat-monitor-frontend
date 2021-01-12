@@ -7,6 +7,8 @@ import { HeartbeatHistory } from '../types/history'
 import {getHeartBeatHistory} from "../api";
 import _ from 'lodash'
 import {IconButton} from "office-ui-fabric-react";
+import {HeartBeatApiWrapper} from "../types/api";
+import {AjaxResult} from "../enums/ajax-result";
 
 export const History: React.FunctionComponent = () => {
     const [pageIndex, setPageIndex] = useState(0)
@@ -26,6 +28,10 @@ export const History: React.FunctionComponent = () => {
 
     const _fetchHeartBeatHistoryList = () => {
         getHeartBeatHistory(sc).then(res => {
+            const result: HeartBeatApiWrapper = res.data
+            if (result.status === AjaxResult.FAIL) {
+                return alert('작업을 수행 중 오류가 발생하였습니다.');
+            }
             const data = res.data.data
             setPageIndex(data.page - 1)
             setTotalPageCount(_.ceil(data.itemCount / data.pageSize))

@@ -39,7 +39,7 @@ export const HeartBeatTestConsole: React.FunctionComponent<{selectedIdList: numb
 
     const handleTestSelected = () => {
         if (selectedIdList.length <= 0) {
-            alert('검사할 서비스를 선택한 후 작업을 수행해주세요.');
+            return alert('검사할 서비스를 선택한 후 작업을 수행해주세요.');
         }
         testHeartBeat({ id: selectedIdList }).then(res => {
             const result: HeartBeatApiWrapper = res.data
